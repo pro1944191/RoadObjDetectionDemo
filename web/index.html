@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://kit.fontawesome.com/1cf483120b.js" crossorigin="anonymous"></script>	
+    <link rel="stylesheet" href="web/css/style.css" />
+    
+    <title>YOLOv8 Object Detection</title>
+
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="topnav-img">
+            <img src="/web/img/scritta_blu.png" alt="AlcorLab logo"/>
+        </div>
+
+        <ul>
+            <li><a href="#home-section">Home</a></li>
+            <li><a href="#detection-section">Detection</a></li>
+            <li><a href="#contacts-section"">Contacts</a></li>
+        </ul>
+    </nav>
+
+    
+    <main>
+        <section class="section" id="home-section">
+            <div class="container"> 
+                <h1>DEMO</h1>
+                <p>
+                    Questa demo è stata creata dall'Alcor Lab, in merito al progetto 
+                    <i><b>"Piattaforma ed ecosistema cooperativo, C-ITS ETSI standard per la mobilità digitale integrata"</b></i>, 
+                    per mostrare le performarce di detection dei vari modelli addestrati. 
+                    Nella sezione detection è possibile fare l'upload di un immagine o un video per vedere graficamente 
+                    i risultati del modello addestrato.
+                </p>              
+            </div>
+        </section>
+
+        <section class="section" id="detection-section">
+            <div class="container">
+                <div class="upload-container">
+                    <h3>Upload your File</h3>
+                    <div class="drag-area">
+                        <div class="icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <!--<video width="500px" height="500px" controls="controls" id="area-video" style="display: none;">
+                            <source src="" type="video/mp4" id="uploaded-video"/ style="display: none;">
+                        </video>
+                        <img src="" id="uploaded-img" style="display: none;">-->
+                        <span class="header">Drag & Drop</span>
+                        <span class="header">or <span class="button">browse</span></span>
+                        <input type="file" hidden />
+                        <span class="support">Supports: JPEG, JPG, PNG</span>
+                    </div>
+                    <div>
+                        <button class="detect-button" onclick="uploadFile()">Detect</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contacts-section">
+            <div class="container">
+                <h1>CONTACTS</h1>
+                <div id="row">
+                    <div class="column">
+                        <img src="/web/img/img_prof.png" alt="Irene Amerini"/>
+                        <h4>Irene Amerini</h4>
+                        <h5>Associate Professor</h5>
+                        <a href="mailto::amerini@diag.uniroma1.it">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                        <a href="https://sites.google.com/diag.uniroma1.it/ireneamerini">
+                            <i class="fa-solid fa-link"></i>
+                        </a>
+                    </div>
+                    <div class="column">
+                        <img src="/web/img/img_lorenzo.png" alt="Lorenzo Papa"/>
+                        <h4>Lorenzo Papa</h4>
+                        <h5>PhD Student</h5>
+
+                        <a href="mailto::papa@diag.uniroma1.it">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                        <a href="https://phd.uniroma1.it/web/LORENZO-PAPA_nP1699806_IT.aspx">
+                            <i class="fa-solid fa-link"></i>
+                        </a>
+                    </div>
+                    <div class="column">
+                        <img src="/web/img/Luca_img.PNG" alt="Luca Maiano"/>
+                        <h4>Luca Maiano</h4>
+                        <h5>Research Fellow</h5>
+                        <a href="mailto::maiano@diag.uniroma1.it">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                        <a href="https://phd.uniroma1.it/web/LUCA-MAIANO_nP1531016_EN.aspx">
+                            <i class="fa-solid fa-link"></i>
+                        </a>
+                    </div>
+                    <div class="column">
+                        <img src="/web/img/img_me.png" alt="Francesco Pro"/>
+                        <h4>Francesco Pro</h4>
+                        <h5>Junior Research Fellow</h5>
+                        <a href="mailto::pro.1944191@studenti.uniroma1.it">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/francesco-pro/">
+                            <i class="fa-solid fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <h3>Sapienza - Alcor Lab © 2024</h3>
+    </footer>
+    <!--<input id="uploadInput" type="file"/>
+    <canvas></canvas>-->
+    <script src="/web/js/main.js"></script>
+</body>
+</html>

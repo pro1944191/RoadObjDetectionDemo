@@ -1,0 +1,115 @@
+/* CSS code */
+*{ 
+    margin: 0;
+    padding: 0;
+    /**box-sizing: border-box;**/
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/*body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #56585d;
+
+}*/
+
+#navbar {
+    background-color: #38BEBB;
+    height: 60px;
+    display: flex;
+    cursor: pointer;
+}
+
+#navbar img{
+    background-color: white;
+    height: 50px;
+    padding: 5px;
+    
+}
+
+.section {
+    color: #004346;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 70%;
+    max-height: 70%;
+    margin: auto;
+    text-align: center;
+}
+
+#detection-section {
+    background-color: #e3eaf6;
+    height: 100vh;
+}
+
+#detection-section .container {
+    height: 70%;
+}
+
+.upload-container {
+    width: 100%;
+    height: 100%;
+    padding: 0 0px;
+    background: #fff;
+    border-radius: 20px;
+    margin: auto;
+}
+
+.result-area {
+    height: 75%;
+    width: 90%;
+    border: 3px dashed #38BEBB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px auto;
+}
+
+.upload-container h3 {
+    padding-top: 10px;
+}
+
+.detect-button {
+    background-color: #38BEBB;
+    border: none;
+    color: white;
+    padding: 6px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px 1px;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 30%;
+}
+
+#uploaded-img {
+    object-fit: contain;
+}
+
+footer {
+    background-color: #004346;
+    text-align: center;
+}
+
+footer h3 {
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#result-img {
+    height: 100%;
+}

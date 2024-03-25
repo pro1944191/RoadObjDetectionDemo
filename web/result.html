@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://kit.fontawesome.com/1cf483120b.js" crossorigin="anonymous"></script>	
+    <link rel="stylesheet" href="web/css/styleResult.css" />
+    
+    <title>YOLOv8 Object Detection</title>
+
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="topnav-img">
+            <img src="/web/img/scritta_blu.png" alt="AlcorLab logo"/>
+        </div>
+    </nav>
+
+    
+    <main>
+        <section class="section" id="detection-section">
+            <div class="container">
+                <div class="upload-container">
+                    <h3>Risultato</h3>
+                    <div class="result-area">
+                        <img src="" id="result-img">
+                    </div>
+                    <div>
+                        <button class="detect-button" onclick="goBack()">Indietro</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+    <footer>
+        <h3>Alcor Lab © 2024</h3>
+    </footer>
+    <!--<input id="uploadInput" type="file"/>
+    <canvas></canvas>-->
+    <script src="/web/js/result.js"></script>
+</body>
+</html>
