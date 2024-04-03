@@ -1,6 +1,6 @@
 from typing import List
 from uuid import UUID, uuid4
-from fastapi import FastAPI, HTTPException, File, UploadFile, Body, Request
+from fastapi import FastAPI, HTTPException, File, UploadFile, Body, Request, WebSocket, WebSocketDisconnect
 from models import Gender, Role, User
 from pydantic import BaseModel
 from fastapi.responses import HTMLResponse, JSONResponse
@@ -8,10 +8,13 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from predictionModel import YoloModel
 import json
+from websockets.exceptions import ConnectionClosed
+import asyncio
+import cv2
 
 # Create instance of the application
 app = FastAPI(title="YOLOv8 Traffic Detection")
-
+camera = cv2.VideoCapture("./web/img/video_dataset_completo.mp4")
 yolo = YoloModel()
 # Example JSON database file
 DATABASE_FILE = "data.json"
@@ -43,6 +46,8 @@ class Item(BaseModel):
 def index():
     #return {"result": "Hello 🔥 APP2"}
     with open("./web/index.html") as file:
+    #with open("./web/sock.html") as file:
+    
         #return file.read()
         return HTMLResponse(content=file.read(), status_code=200)
 
@@ -63,8 +68,9 @@ def upload(file: UploadFile = File(...)):
     
     if file.content_type.split("/")[0] == "image":
         yolo.predict(imagePath)
-    elif file.content_type.split("/")[0] == "video":
-        yolo.predictVideo(imagePath)
+    #elif file.content_type.split("/")[0] == "video":
+        #yolo.predictVideo(imagePath)
+
 
     return JSONResponse({"message": f"Successfuly uploaded {file.filename}"})
 
@@ -73,6 +79,29 @@ async def show_prediction():
     with open("./web/result.html") as file:
         #return file.read()
         return HTMLResponse(content=file.read(), status_code=200)
+
+@app.get("/show_predictionVideo", response_class=HTMLResponse)
+async def show_predictionVideo():
+    with open("./web/resultVideo.html") as file:
+        #return file.read()
+        return HTMLResponse(content=file.read(), status_code=200)
+
+@app.websocket("/ws")
+async def get_stream(websocket: WebSocket):
+    await websocket.accept()
+    try:
+        while True:
+            success, frame = camera.read()
+            if not success:
+                break
+            else:
+                frame_bb = yolo.predictVideoLive(frame)
+                ret, buffer = cv2.imencode('.jpg', frame)
+                await websocket.send_text("some text")
+                await websocket.send_bytes(buffer.tobytes())
+            #await asyncio.sleep(0.03)
+    except (WebSocketDisconnect, ConnectionClosed):
+        print("Client disconnected")
 """
 # Create a route to visualize all users 
 @app.get("/api/v1/users")

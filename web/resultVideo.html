@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Live Streaming</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://kit.fontawesome.com/1cf483120b.js" crossorigin="anonymous"></script>	
+        <link rel="stylesheet" href="web/css/styleResult.css" />
+    </head>
+    <body>
+        <nav id="navbar">
+            <div class="topnav-img">
+                <img src="/web/img/scritta_blu.png" alt="AlcorLab logo"/>
+            </div>
+        </nav>
+
+        <main>
+            <section class="section" id="detection-section">
+                <div class="container">
+                    <div class="upload-container">
+                        <h3>Risultato</h3>
+                        <div class="result-area">
+                            <img src="" id="result-img">
+                        </div>
+                        <div id="textArea"></div>
+                        <div>
+                            <button class="detect-button" onclick="goBack()">Indietro</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+    
+        </main>
+        <footer>
+            <h3>Alcor Lab © 2024</h3>
+        </footer>
+        <!--<img id="frame" src="">
+        <div id="textArea"></div>-->
+        <script>
+            let ws = new WebSocket("ws://192.168.1.112:8080/ws");
+            let image = document.getElementById("result-img");
+            image.onload = function(){
+                URL.revokeObjectURL(this.src); // release the blob URL once the image is loaded
+            } 
+            ws.onmessage = function(event) {
+                if (typeof event.data === 'string') 
+                    document.getElementById("textArea").innerHTML = event.data;
+                else
+                    image.src = URL.createObjectURL(event.data);
+            };
+            
+            function goBack(){
+                window.location.href = "http://192.168.1.112:8080/";
+            }
+        </script>
+    </body>
+</html>

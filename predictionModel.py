@@ -23,6 +23,22 @@ class YoloModel():
         img = annotator.result()
         cv2.imwrite("./web/img/predicted_img.png",img)
 
+    def predictVideoLive(self, frame):
+        img = frame#cv2.imread(path)
+        results = self.model.predict(img)
+        result = results[0]
+        boxes = result.boxes
+        annotator = Annotator(img)
+        for box in boxes:
+
+            b = box.xyxy[0]  # get box coordinates in (left, top, right, bottom) format
+            c = box.cls
+            annotator.box_label(b, self.model.names[int(c)])
+
+        img = annotator.result()
+        #cv2.imwrite("./web/img/predicted_img.png",img)
+        return img
+    
     def predictVideo(self, path):
         VIDEO_PATH = "./web/img/video_dataset_completo.mp4"
         video_info = sv.VideoInfo.from_video_path(VIDEO_PATH)

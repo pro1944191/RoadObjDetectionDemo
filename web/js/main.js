@@ -82,6 +82,7 @@
                 formData.append('file', file);
                 //formData.append('type', fileType)
                 
+                alert(fileType);
                 
                 fetch(destUrl, {
                        method: 'POST',
@@ -90,7 +91,11 @@
                      })
                      .then(async response => {
                        console.log(await response.text());
-                       window.location.href = hrefUrl;
+                       if(fileType == "image"){
+                        window.location.href = hrefUrl;
+                       }else{
+                        window.location.href = 'http://192.168.1.112:8080/show_predictionVideo'
+                       }
                      })
                      .catch(error => {
                        console.error(error);
